@@ -14,28 +14,29 @@ Users will need to signup and login if they need to access the app.
 
 
  <h2> PersLib---Front-End </h2></br>
+
  <h3>Wireframes</h3>
- - Please see the wireframe for the Create Account/Login page below: </br></br> 
+ 
+- Please see the wireframe for the Create Account page below: </br></br>
+ ![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/d2a62136-4250-4531-b8d1-94530361b707)
+ 
+ - Please see the wireframe for the Login page below: </br></br> 
 
-![image](https://github.com/davedawita/ManageProject---Front-End/assets/155693018/e5ae9793-1608-47ab-afcf-24db53e466f7)
-
+![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/8c5e84e1-70ae-495c-bce5-25254650229a)
 
  - Please see the wireframe for the index page below: </br></br>
 
 ![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/3f096676-3c1a-4459-a3af-95e4e2785c82)
 
+ - Please see the wireframes for the show pages page below: </br></br>
+ 
+![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/7f4cba48-702e-4e9a-b03e-5231d610716b)
 
 
+![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/13363932-b244-4cfc-a44d-8ace64eee28b)
 
- - Please see the wireframe for the show page page below: </br></br>
 
  
-
-
- 
-
-
-
 **<h3>User Stories</h3>** 
  - 
 
@@ -93,7 +94,7 @@ handleLogout() function on the front-end allows users to logout</br></br>
  
 If you are on a browser, use of Google chrome is highly recommended.    </br>
 <h2>Technologies used</h2>
-Python, Django, REACT, Javascript, Node.js, HTML, tailwind CSS, ejs, Postgres, Postman, and Figma(Only for wireframes without Dev Mode). We can also say that we use Python-Django stack.  </br>
+Python (Backend programming Language), Django (Backend Framework), REACT (FrontEnd Framework), Javascript, Node.js (Server Side JavaScript runtime), HTML, tailwind CSS, ejs, Postgres (Database), Postman, and Figma(Only for wireframes without Dev Mode). We can also say that we use Python-Django stack.  </br>
 
 <h2>MVP Goals</h2>
 Full CRUD(Create, Read, Update, Delete) Functionality. </br>
