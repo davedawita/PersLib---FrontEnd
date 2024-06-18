@@ -18,25 +18,23 @@ Users will need to signup and login if they need to access the app.
  <h3>Wireframes</h3>
  
 - Please see the wireframe for the Create Account page below: </br></br>
- ![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/d2a62136-4250-4531-b8d1-94530361b707)
+ ![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/20c5d680-d7da-42eb-a8a0-c9f753f609a2)
  
  - Please see the wireframe for the Login page below: </br></br> 
 
-![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/8c5e84e1-70ae-495c-bce5-25254650229a)
+![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/988a5461-2348-420d-b65e-076d2cd9715c)
 
  - Please see the wireframe for the index page below: </br></br>
 
-![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/3f096676-3c1a-4459-a3af-95e4e2785c82)
+![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/15628a15-6a31-4777-a653-2e059d1dd777)
 
  - Please see the wireframes for the show pages page below: </br></br>
  
-![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/7f4cba48-702e-4e9a-b03e-5231d610716b)
+![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/bf92e803-4ae6-4a36-b833-da64aff834c6)
+
+![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/1ec77897-cf2c-4eb6-8f1a-41dd8b6dfaa1)
 
 
-![image](https://github.com/davedawita/PersLib---FrontEnd/assets/155693018/13363932-b244-4cfc-a44d-8ace64eee28b)
-
-
- 
 **<h3>User Stories</h3>** 
  - 
 
