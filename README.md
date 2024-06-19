@@ -76,8 +76,8 @@ class User(Manager):</br>
 
 
 <b>perslib/models.py:</b></br>
-class Perslib(models.Model):</br>
-    date = models.TimeFiels(auto_now=False, auto_now_add=False)</br>
+class Perslib(models.Model):</br></br>
+    date = models.TimeField(auto_now=False, auto_now_add=False)</br>
     description = models.CharField(max_length=20)</br></br>
     
 
