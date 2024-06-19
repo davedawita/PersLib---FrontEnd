@@ -57,7 +57,6 @@ The app resides in App.js. User log-in/createaccount code is also in App.js.</br
 **<h3>Back-end Repository</h3>**
 The backend repo can be accessed through the link below:</br>
 
-
 **<h3>MODELS:</h3>** 
 The following models are included: </br></br>
 <b>perslib/users/manager.py:</b></br>
