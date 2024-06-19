@@ -97,4 +97,4 @@ Login and Logout access for users   </br>
 Please click the back button of the browser to go back to previous page. Refresh the page.   </br>
 
 <h2>Forthcoming Features</h2>
-In the future, we need users to be able to give access to family members so that the documents can be viewed by others.
+In the future, we need users to be able to give access to family members so that the documents can be viewed by others. In addition, I need to learn Angular (FrontEnd Framework) and do this same app with it.
