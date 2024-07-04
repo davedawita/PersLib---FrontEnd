@@ -35,7 +35,7 @@ const FormTitle = (props) => {
   }
 
   return(
-    <form className='FormTitle'>
+    <form  onSubmit={handleSubmission} className='FormTitle'>
         <h3 className = 'EditTitle'>Title</h3>
         <input className='input'
         type='text'
