@@ -1,16 +1,21 @@
 //Import All Our Components
 import Header from './components/Header'
+import { ToastContainer } from 'react-toastify'  //This is for the alert kind message in react
 
-import LoginComponent from './components/LoginComponent'
-import CreateAccount from './components/CreateAccount'
+import LoginUser from './pages/LoginPage.js'
+import CreateAccount from './pages/CreateAccountPage.js'
+// import ResetPasswordPage from './pages/ResetPasswordPage.js'
 
-import Years from './pages/Years.js'
-import Titles from './pages/Titles.js'
-import Perslib from './pages/Perslib.js'
+
+import AllYears from './pages/AllYears.js'
+import AllTitles from './pages/AllTitles.js'
+import AllPerslibs from './pages/AllPerslibs.js'
 import FormTitle from './pages/FormTitle.js'
 import FormPerslib from './pages/FormPerslib.js'
 import FormYear from './pages/FormYear.js'
 import SinglePerslib from './pages/SinglePerslib.js'
+import SingleTitle from './pages/SingleTitle.js'
+import SingleYear from './pages/SingleYear.js'
 
 import './App.css'
 
@@ -21,12 +26,12 @@ import {useState, useEffect} from 'react'
 import {Route, Routes} from 'react-router-dom'
 
 
-//Import axios
-import axios from 'axios'
+
 
 //OUR API URL
 // const apiURL = process.env.REACT_APP_BACKEND_URL  
 const apiURL = 'http://localhost:8000'
+
 
 
 function App(props) {
@@ -65,48 +70,48 @@ function App(props) {
   //For years page:
   const getYears = async () => {
     const response = await fetch(apiURL + '/year/')
-    const data = await response.json()
-    console.log(data)
-    setYears(data)
+    const dataYear = await response.json()
+    console.log(dataYear)
+    setYears(dataYear)
   }
 
   //For titles page:
   const getTitles = async () => {
     const response = await fetch(apiURL + '/title/')
-    const data = await response.json()
-    console.log(data)
-    setTitles(data)
+    const dataTitle = await response.json()
+    console.log(dataTitle)
+    setTitles(dataTitle)
   }
 
   //For perslib page:
   const getPerslibs = async () => {
     const response = await fetch(apiURL + '/perslib/')
-    const data = await response.json()
-    console.log(data)
-    setPerslibs(data)
+    const dataPerslib = await response.json()
+    console.log(dataPerslib)
+    setPerslibs(dataPerslib)
   }
   //============================================================================
   //Defining functions for our document CREATE & EDIT:
 
   //Create & Edit function for Years page:
 
-  const handleFormYear = async (data, type) => {
-    if(type === 'new'){     //If new, we are creating a resource    
+  const handleFormYear = async (dataYear, type) => {
+    if(type === 'newyear'){     //If new, we are creating a resource    
     await fetch(`${apiURL}/year/`, {
       method: 'post',
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(dataYear)
     })
     getYears()
   } else {
-    await fetch(`${apiURL}/year/${data.id}/`, {         //Here, data is bubbling up from FormYear.js
+    await fetch(`${apiURL}/year/${dataYear.id}/`, {         //Here, data is bubbling up from FormYear.js
       method: 'put',
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(dataYear)
     })     
     getYears()
   }
@@ -114,23 +119,23 @@ function App(props) {
 
   //Create & Edit function for Titles page:
 
-  const handleFormTitle = async (data, type) => {
-    if(type === 'new'){     //If new, we are creating a resource    
+  const handleFormTitle = async (dataTitle, type) => {
+    if(type === 'newtitle'){     //If new, we are creating a resource    
     await fetch(`${apiURL}/title/`, {
       method: 'post',
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(dataTitle)
     })
     getTitles()
   } else {
-    await fetch(`${apiURL}/title/${data.id}/`, {         //Here, data is bubbling up from FormYear.js
+    await fetch(`${apiURL}/title/${dataTitle.id}/`, {         //Here, data is bubbling up from FormYear.js
       method: 'put',
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(dataTitle)
     })     
     getTitles()
   }
@@ -138,23 +143,23 @@ function App(props) {
 
   //Create & Edit function for Perslibs page:
 
-  const handleFormPerslib = async (data, type) => {
-    if(type === 'new'){     //If new, we are creating a resource    
+  const handleFormPerslib = async (dataPerslib, type) => {
+    if(type === 'newperslib'){     //If new, we are creating a resource    
     await fetch(`${apiURL}/perslib/`, {
       method: 'post',
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(dataPerslib)
     })
     getPerslibs()
   } else {
-    await fetch(`${apiURL}/perslib/${data.id}/`, {         //Here, data is bubbling up from FormPerslib.js
+    await fetch(`${apiURL}/perslib/${dataPerslib.id}/`, {         //Here, data is bubbling up from FormPerslib.js
       method: 'put',
       headers: {
         "content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(dataPerslib)
     })     
     getPerslibs()
   }
@@ -206,79 +211,85 @@ function App(props) {
         <Route
           exact 
           path="/"
-          element={<Years years={years} deleteYear={deleteYear} />}    //Bringing state to route.
+          element={<AllYears years={years} deleteYear={deleteYear} />}    
         />
         <Route
           exact 
-          path="/:title"
-          element={<Titles titles={titles} deleteTitle={deleteTitle} /> }
+          path="/:id"
+          element={<AllTitles titles={titles} deleteTitle={deleteTitle} /> }
         />
         <Route
           exact 
-          path="/:title/:perslib"
-          element={<Perslib perslibs={perslibs} /> }
+          path="/:id/:id"
+          element={<AllPerslibs perslibs={perslibs} /> }
         />
+
+        
         <Route
           exact 
-          path="/:title/:perslib/:id"
+          path="/:id/SingleTitle"
+          element={<SingleTitle titles={titles} deleteTitle={deleteTitle} /> }
+        /> 
+        <Route
+          exact 
+          path="/:id/:id/SinglePerslib"
           element={<SinglePerslib perslibs={perslibs} deletePerslib={deletePerslib} /> }
-        />
-  
+        /> 
 
         <Route
           exact 
           path="/newyear"
-          element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Add Year' formType='new_year' />} 
-          // Here, we are passing the "handleFormYear", "buttonlabel", and "formType" props to FormYear.js.
+          element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Add Year' formType='newyear' />} 
+          // Here, we are passing the "handleFormYear", "buttonlabel_year", and "formType" props to FormYear.js.
         />   
         <Route
           exact 
           path="/edityear/:id"
-          element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Edit Year' formType='edit_year' />}
+          element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Edit Year' formType='edityear' />}
         />
 
         <Route
           exact 
           path="/newtitle"
-          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel_title='Add Title' formType='new_title' />} 
+          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel_title='Add Title' formType='newtitle' />} 
         />
         <Route
           exact 
           path="/edititle/:id"
-          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel_title='Edit Title' formType='edit_title' />}
+          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel='Edit Title' formType='edititle' />}
         />
         <Route
           exact 
           path="/newperslib"
-          element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Add Item' formType='new_perslib' />} 
+          element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Add Item' formType='newperslib' />} 
         />
         <Route
           exact 
           path="/editperslib/:id"
-          element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Edit Item' formType='edit_perslib' />}
+          element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Edit Item' formType='editperslib' />}
         />
         <Route
           exact
           path="/login"
-          element={<LoginComponent />}
+          element={<LoginUser />}
         />   
         <Route
           exact
           path="/user"
-          element={<CreateAccount onClick={handleChange}/>}
-        />     
+          element={<CreateAccount />}
+        />  
+        {/* <Route
+          exact
+          path="/resetpassword"
+          element={<ResetPasswordPage />}
+        />  */}
+        
       </Routes>  
 
-      <img src={file} /> 
+      <ToastContainer />    
+     
 
-      {currentUser.username ?
-      <div class='loggedInDiv'>
-        {/* <Header handleLogout={handleLogout}/> */}
-        {/* <Main username={username}/>           */}
-      </div>
-      :
-      null
-    }    
+      
 
     </div>
   )

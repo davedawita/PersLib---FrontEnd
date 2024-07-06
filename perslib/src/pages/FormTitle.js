@@ -11,10 +11,10 @@ const FormTitle = (props) => {
   const currentTitle = useMemo(() => props.titles.find(title => title.id === parseInt(params.id)), [params.id, props.titles])
 
   const[formData2, setFormData2] = useState(
-    props.formType === 'new_title' ? {
-      Title: ''      
+    props.formType === 'newtitle' ? {
+      title: ''      
     }: {
-      Title: currentTitle.Title,      
+      title: currentTitle.title,      
       id: parseInt(currentTitle.id)
     }
   )
@@ -29,7 +29,7 @@ const FormTitle = (props) => {
 
   const handleSubmission = (event) => {     //Here, we need to bring our "event" object because we are waiting for that event on submit
     event.preventDefault()    //To disable default functionality with our form.
-    props.handleSubmit(formData2, props.formType)
+    props.handleFormTitle(formData2, props.formType)
     //Then, after we submit everything here and we pass the information fetch, let's go ahead and navigate to '/':
     navigate('/:title')      //To go back to the titles page.
   }
@@ -40,7 +40,7 @@ const FormTitle = (props) => {
         <input className='input'
         type='text'
         onChange={handleChange}
-        value={formData2.Title}
+        value={formData2.title}
         name='Title'
         />     
                 

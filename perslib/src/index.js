@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom'
+import { Provider } from 'react-redux'
+import store  from './app/store.js'
+
+//Wrapping App in Provider.App must be wrapped in provider since I am using useDispatch in it. Provider sets the context so only its children can have access to it, not a parent.
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,8 +20,10 @@ root.render(
   //Wrap our App Component inside of Router so App can use router.
   <Router>
     <React.StrictMode>
-    <App />
-  </React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>     
+    </React.StrictMode>
   </Router>
   
 );

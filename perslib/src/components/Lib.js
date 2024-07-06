@@ -1,27 +1,27 @@
 import {Link, useNavigate} from 'react-router-dom'
 
-const Lib = ({lib, deleteLib}) => {
+const Lib = ({perslib, deletePersLib}) => {
 const navigate = useNavigate()
 
 const handleDelete = (event) => {
   event.preventDefault()
-  deleteLib(lib.id)
-  navigate('/')
+  deletePersLib(perslib.id)
+  navigate('/:title/:perslib')
 }
 return(
   <div>
-      LIB
-    {/* <Link to={`lib/${lib.id}`}>
-    <h1>{lib.Title}</h1>
-    </Link>
+  <Link to={`/perslib/${perslib.id}`}>
+    {/* <h1>{perslib.image}</h1> */}
+    <h1>{perslib.description}</h1>
+    <h1>{perslib.date}</h1>
+    <h1>{perslib.time}</h1>
+  </Link>      
+  <h2>{perslib.Body}</h2>
+  <form onSubmit={handleDelete}>
+    <input className='deletePerslib'type='submit' value='Delete Item' />
 
-    <h2>{lib.Body}</h2>
-
-    <form onSubmit={handleDelete}>
-      <input type='submit' value='Delete' />
-    </form> */}
-
-  </div>
+  </form>
+</div>
 )
 }
 
