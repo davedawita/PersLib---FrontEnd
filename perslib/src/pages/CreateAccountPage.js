@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { register } from '../features/auth/authSlice'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 const CreateAccount = () => {
@@ -56,9 +56,7 @@ const handleChange = (e) => {
       toast.error(message)
     } if(isSuccess || user) {
       navigate('/:id')      
-    } else{
-
-    }
+    } 
   })
 
   return(
