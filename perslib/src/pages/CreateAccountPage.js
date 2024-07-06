@@ -57,7 +57,7 @@ const handleChange = (e) => {
     } if(isSuccess || user) {
       navigate('/:id')      
     } 
-  })
+  },[isError, isSuccess, user, navigate,dispatch])
 
   return(
     <div>
