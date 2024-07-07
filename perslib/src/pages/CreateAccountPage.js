@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
-import { register } from '../features/auth/authSlice'
+import { register, reset } from '../features/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
 
 
@@ -48,6 +48,7 @@ const handleChange = (e) => {
       }
       dispatch(register(userData))
     }
+   
   }
 
 
@@ -57,6 +58,9 @@ const handleChange = (e) => {
     } if(isSuccess || user) {
       navigate('/:id')      
     } 
+
+    dispatch(reset())
+
   },[isError, isSuccess, user, navigate,dispatch])
 
   return(

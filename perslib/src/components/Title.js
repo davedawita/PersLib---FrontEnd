@@ -6,13 +6,13 @@ const navigate = useNavigate()
 const handleDelete = (event) => {
   event.preventDefault()
   deleteTitle(post.id)
-  navigate('/:id')
+  navigate('/title')
 }
 return(
   <div>
-    {/* <Link to={`/${post.id}`}>
+    <Link to={`/${post.id}`}>
       <h1>{post.title}</h1>
-    </Link>         */}
+    </Link>        
   <form onSubmit={handleDelete}>
     <input className='deleteTitle'type='submit' value='Delete' />
 

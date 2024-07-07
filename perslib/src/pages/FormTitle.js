@@ -31,7 +31,7 @@ const FormTitle = (props) => {
     event.preventDefault()    //To disable default functionality with our form.
     props.handleFormTitle(formData2, props.formType)
     //Then, after we submit everything here and we pass the information fetch, let's go ahead and navigate to '/':
-    navigate('/:title')      //To go back to the titles page.
+    navigate('/title')      //To go back to the titles page.
   }
 
   return(
@@ -41,7 +41,7 @@ const FormTitle = (props) => {
         type='text'
         onChange={handleChange}
         value={formData2.title}
-        name='Title'
+        name='title'
         />     
                 
         <input 

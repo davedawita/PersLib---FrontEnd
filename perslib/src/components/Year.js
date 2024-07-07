@@ -1,36 +1,55 @@
-import {useMemo} from 'react'
+
 import {Link, useNavigate, useParams} from 'react-router-dom'
+// import { useState, useEffect } from "react"
 
 const Year = ({asdf, deleteYear, years}) => {
-const navigate = useNavigate()
+  const params = useParams()
+  const navigate = useNavigate()
+  // const [loading, setLoading] = useState(true)
+  // const [currentYear, setCurrentYear] = useState(null)
 
-const params = useParams()
-  
-// const currentYear = useMemo(() => years.find(year => year.id === parseInt(params.id)), [params.id, years])
+  // useEffect(() => {
+  //   const foundYear = (years || []).find(post => post.id === parseInt(params.id))
+  //   if (foundYear) {
+  //     setCurrentYear(foundYear)
+  //     setLoading(false)
+  //   } else {
+  //     setLoading(true)
+  //   }
+  // }, [params.id, years])
 
-const handleDelete = (event) => {
-  event.preventDefault()
-  deleteYear(asdf.id)
-  navigate('/')
-}
-return(
-  <div>
-    <Link to={`/${asdf.id}`}>
-      <h1>{asdf.year}</h1>
-    </Link> 
 
-     {/* <h2>{currentYear.year}</h2>    */}
+  const handleDelete = (event) => {
+    event.preventDefault()
+    deleteYear(asdf.id)
+    navigate('/year')
+  }
 
-    <Link to={`/edityear/${params.id}`}>
+
+  // if (loading) {
+  //   return <div>Loading...</div>
+  // }
+  // if (!currentYear) {
+  //   return <div>Post not found</div>
+  // }
+
+
+  return(
+    <div>
+      <Link to={`/${asdf.id}`}>
+        <h1>{asdf.year}</h1>  
+      </Link> 
+
+      <Link to={`/year/edityear/${asdf.id}`}>
         <button>Edit Year</button>
-    </Link>
-            
-  <form onSubmit={handleDelete}>
-    <input className='deleteYear'type='submit' value='Delete' />
+      </Link>  
+              
+      <form onSubmit={handleDelete}>
+        <input className='deleteYear'type='submit' value='Delete' />
 
-  </form>
-</div>
-)
+      </form>
+    </div>
+  )
 }
 
 export default Year

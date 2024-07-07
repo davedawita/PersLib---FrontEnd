@@ -6,7 +6,6 @@ import LoginUser from './pages/LoginPage.js'
 import CreateAccount from './pages/CreateAccountPage.js'
 // import ResetPasswordPage from './pages/ResetPasswordPage.js'
 
-
 import AllYears from './pages/AllYears.js'
 import AllTitles from './pages/AllTitles.js'
 import AllPerslibs from './pages/AllPerslibs.js'
@@ -14,8 +13,9 @@ import FormTitle from './pages/FormTitle.js'
 import FormPerslib from './pages/FormPerslib.js'
 import FormYear from './pages/FormYear.js'
 import SinglePerslib from './pages/SinglePerslib.js'
-import SingleTitle from './pages/SingleTitle.js'
 import SingleYear from './pages/SingleYear.js'
+import SingleTitle from './pages/SingleTitle.js'
+import Year from './components/Year.js'
 
 import './App.css'
 
@@ -25,28 +25,15 @@ import {useState, useEffect} from 'react'
 //import components from React Router
 import {Route, Routes} from 'react-router-dom'
 
-
-
-
 //OUR API URL
 // const apiURL = process.env.REACT_APP_BACKEND_URL  
 const apiURL = 'http://localhost:8000'
-
 
 
 function App(props) {
   //========================================================================================================
   //Setting up STATES
   //========================================================================================================
-
-  //setup state for Creating User:
-  const [currentUser, setCurrentUser] = useState({})       //Upon display of the user page, since username is not set, initial value of useState is empty.
-
-  //setup state for login:
-  const [Login, setLogin] = useState(true)       //This is true since Login page is rendered.
-
-  //setup state for logout:
-  const [Logout, setLogout] = useState(true)       //This is true since Login page is rendered.
 
   //setup state for profile picture:
   const [file, setFile] = useState();
@@ -80,7 +67,7 @@ function App(props) {
     const response = await fetch(apiURL + '/title/')
     const dataTitle = await response.json()
     console.log(dataTitle)
-    setTitles(dataTitle)
+    setTitles(dataTitle.data)
   }
 
   //For perslib page:
@@ -210,44 +197,37 @@ function App(props) {
       <Routes>
         <Route
           exact 
-          path="/"
+          path="/year"
           element={<AllYears years={years} deleteYear={deleteYear} />}    
         />
         <Route
           exact 
-          path="/:id"
-          element={<AllTitles titles={titles} deleteTitle={deleteTitle} /> }
+          path="/year/:id"
+          // element={ <AllTitles titles={titles} deleteTitle={deleteTitle} /> } 
+          element={ <Year years={years} deleteYear={deleteYear} /> } 
         />
         <Route
           exact 
-          path="/:id/:id"
-          element={<AllPerslibs perslibs={perslibs} /> }
-        />
-
-        
+          path="/year/:year_id/title"
+          element={<AllPerslibs perslibs={perslibs} /> }   
+        />         
         <Route
           exact 
-          path="/:id/SingleTitle"
-          element={<SingleTitle titles={titles} deleteTitle={deleteTitle} /> }
-        /> 
-        <Route
-          exact 
-          path="/:id/:id/SinglePerslib"
+          path="/year/:year_id/title/:title_id"
           element={<SinglePerslib perslibs={perslibs} deletePerslib={deletePerslib} /> }
         /> 
 
         <Route
           exact 
-          path="/newyear"
+          path="/year/newyear"
           element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Add Year' formType='newyear' />} 
           // Here, we are passing the "handleFormYear", "buttonlabel_year", and "formType" props to FormYear.js.
         />   
         <Route
           exact 
-          path="/edityear/:id"
+          path="/year/edityear/:id"
           element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Edit Year' formType='edityear' />}
-        />
-
+        />        
         <Route
           exact 
           path="/newtitle"
@@ -256,7 +236,7 @@ function App(props) {
         <Route
           exact 
           path="/edititle/:id"
-          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel='Edit Title' formType='edititle' />}
+          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel_title='Edit Title' formType='edititle' />}
         />
         <Route
           exact 
@@ -286,10 +266,7 @@ function App(props) {
         
       </Routes>  
 
-      <ToastContainer />    
-     
-
-      
+      <ToastContainer />       
 
     </div>
   )
