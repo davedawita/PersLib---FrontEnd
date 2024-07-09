@@ -133,14 +133,7 @@
 }
 
 
-.EditTitle{
-  background-color: brown;
-  padding: 15px;
-  width: 700px;
-  border-radius: 10px;
-  color:white;
-  margin: 0 10px 0 70px;
-}
+
 
 .input{
   font-size: 20px;
@@ -288,4 +281,24 @@
 .mainpage {
   margin: 10px 200px 20px 200px;
   
+}
+
+.addTitles {
+  width: 100vw;
+  height: 50vh;
+  padding: 15px;
+  width: 700px;
+  border-radius: 10px;
+  color:white;
+  margin: 0 10px 0 70px;
+}
+
+
+.EditTitle{
+  background-color: brown;
+  padding: 15px;
+  width: 600px;
+  border-radius: 10px;
+  color:white;
+  margin: 0 10px 0 px;
 }

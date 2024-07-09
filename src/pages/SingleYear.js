@@ -12,19 +12,23 @@ const SingleYear = (props) => {
   const location = useLocation()
   console.log(location)
   return (    
-    <div>      
+    <div className='addTitles'>      
       <h2>{currentYear.year} Documents</h2> 
-      <Link to='/newtitle'>
-          <button className='addTitle'>Add Title</button>
-      </Link> 
+      <div className='EditTitle'>
+        <Link to='/newtitle'>
+            <button className='addTitle'>Add Title</button>
+        </Link> 
 
-      <Link to={`/edityear/${params.id}/`}>
-        <button>Edit Year</button>
-      </Link>
-      <Link to={'/'}>
-        <button>Go Back</button>
-      </Link>  
-      {/* <Outlet></Outlet> */}
+        <Link to={`/edityear/${params.id}/`}>
+          <button>Edit Year</button>
+        </Link>
+        
+        <Link to={'/'}>
+          <button>Go Back</button>
+        </Link>  
+        {/* <Outlet></Outlet> */}
+      </div>
+      
     </div>     
   ) 
 }
