@@ -1,5 +1,5 @@
 .App {
-  background-color: rgb(216, 157, 48);
+  background-color: rgb(222, 213, 204);
   width: 100vw;
   height: 100vh;  
   overflow: hidden;
@@ -175,21 +175,7 @@
   margin: 5px 0 5px 0;
 }
 
-.logoutBtn{
-  width: 120px;
-  font-size: 17px;
-  font-weight:600;
-  padding:5px;
-  border-radius: 10px;    
-  margin: 10px 40px 0 1750px;
-  background-color: rgb(243, 9, 9);
-  color:white;
-  font-weight:600;  
-}
 
-.logoutBtn:hover {
-  filter: drop-shadow(0 2px 2px white);
-}
 
 .Title{
   font-size: 20px;
@@ -256,4 +242,42 @@
   outline: none;
   filter: drop-shadow(0 1px 1px grey);
   color: darkgrey;
+}
+
+.maintitle {
+  color:brown;
+  font-size: 50px;
+}
+
+.introduction {
+  color: white;
+  font-size: 20px;
+}
+
+.yearcontainer {
+  background-color: rgb(127, 132, 201);
+}
+
+.yeartitle {
+  color: white;
+}
+
+.years {
+  color: white;
+}
+
+.logoutBtn{
+  width: 120px;
+  font-size: 17px;
+  font-weight:600;
+  padding:5px;
+  border-radius: 10px;    
+  margin: 100px 40px 0 1750px;
+  background-color: rgb(243, 9, 9);
+  color:white;
+  font-weight:600;  
+}
+
+.logoutBtn:hover {
+  filter: drop-shadow(0 2px 2px white);
 }
