@@ -6,7 +6,7 @@ const AllYears = (props) => {
   
   return(
     
-      <div>
+      <div className='mainpage'>
         <h1 className="maintitle">PersLib</h1>
         <p className='introduction'>PersLib is an application that allows users to record and track their life moments. It encourages users to save pictures, videos, important documents, etc. It is basically a personal library that holds important recorded information in life. It is more safe from local computers and hard drives and it enables users to easily manipulate their personal data by adding features, editing records, and with deleting functionality.</p>
         <Link to='/newyear'>

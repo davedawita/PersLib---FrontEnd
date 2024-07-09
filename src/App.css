@@ -1,8 +1,8 @@
 .App {
-  background-color: rgb(222, 213, 204);
+  background-color: rgb(50, 48, 46);
   width: 100vw;
-  height: 100vh;  
-  overflow: hidden;
+  height: 200vh;  
+  /* overflow: hidden; */
 }
 
 .nav {
@@ -256,6 +256,9 @@
 
 .yearcontainer {
   background-color: rgb(127, 132, 201);
+  width: 400px; 
+
+
 }
 
 .yeartitle {
@@ -280,4 +283,9 @@
 
 .logoutBtn:hover {
   filter: drop-shadow(0 2px 2px white);
+}
+
+.mainpage {
+  margin: 10px 200px 20px 200px;
+  
 }
