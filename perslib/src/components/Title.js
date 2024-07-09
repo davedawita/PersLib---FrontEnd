@@ -1,24 +1,27 @@
-import {Link, useNavigate} from 'react-router-dom'
+import {Link, useNavigate, useParams} from 'react-router-dom'
 
-const Title = ({post, deleteTitle}) => {
-const navigate = useNavigate()
+const Title = ({abcd,deleteTitle}) => {
+  
+  const navigate = useNavigate()
 
-const handleDelete = (event) => {
-  event.preventDefault()
-  deleteTitle(post.id)
-  navigate('/title')
-}
-return(
-  <div>
-    <Link to={`/${post.id}`}>
-      <h1>{post.title}</h1>
-    </Link>        
-  <form onSubmit={handleDelete}>
-    <input className='deleteTitle'type='submit' value='Delete' />
+  const handleDelete1 = (event) => {
+    event.preventDefault()
+    deleteTitle(abcd.id)
+    navigate('/title')
+  }
 
-  </form>
-</div>
-)
+  return(
+    <div> 
+      <Link to={`/title/${abcd.id}`}>
+        <h1>{abcd.title}</h1>
+      </Link>  
+
+      <form onSubmit={handleDelete1}>
+        <input className='deleteTitle'type='submit' value='Delete' />
+      </form>
+
+    </div>
+  )  
 }
 
 export default Title

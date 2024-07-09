@@ -32,8 +32,8 @@ const login = async(userData)=> {
     localStorage.setItem("user", JSON.stringify(response.data))   //To store our tokens
   }
 
-  return response.
-  console.log(response.data) 
+  return response.data
+  
 }
 
 //Logout User

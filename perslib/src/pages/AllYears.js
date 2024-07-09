@@ -1,20 +1,27 @@
 import Year from '../components/Year'
 import {Link} from 'react-router-dom'
 
+
 const AllYears = (props) => {  
-
+  
   return(
-    <div>
-      <Link to='/year/newyear'>
-        <button className='addYear'>Add Year</button>
-      </Link>     
+    
+      <div>
+        <Link to='/newyear'>
+          <button className='addYear'>Add Year</button>
+        </Link>    
+        <Link to='/logout'>
+          <button className='logout'>LOG OUT</button>
+        </Link>        
 
-      {props.years.map((asdf) => <Year asdf={asdf} key={asdf.id}  deleteYear={props.deleteYear} handleFormYear={props.handleFormYear} />)}
+        {props.years.map((asdf) => <Year asdf={asdf} key={asdf.id}  deleteYear={props.deleteYear} />)} 
 
-   </div> 
-  )     
+      </div>              
+    
+  ) 
+      
 }
-
+ 
 export default AllYears
 
 

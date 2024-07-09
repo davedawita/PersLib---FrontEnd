@@ -6,32 +6,38 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './app/store.js'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';   //This is what I added for nested routes 
-import AllYears from './pages/AllYears.js';
-import AllTitles from './pages/AllTitles.js';
-import AllPerslibs from './pages/AllPerslibs.js';
-import SinglePerslib from './pages/SinglePerslib.js';
+// import { createBrowserRouter } from 'react-router-dom';   //This is what I added for nested routes 
+// import AllYears from './pages/AllYears.js';
+// import AllTitles from './pages/AllTitles.js';
+// import AllPerslibs from './pages/AllPerslibs.js';
+// import SinglePerslib from './pages/SinglePerslib.js';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <AllYears />,       //For  All Years page
-    children: [
-      {
-        path: "/year_id",    //For All Titles Page (Note:Single Year Page = All Titles Page)
-        element: <AllTitles />,
-      },
-      {
-        path: ":year_id/title",    //For All Perslibs Page (Note:Single Title Page = All Perslibs Page)
-        element: <AllPerslibs />,
-      },
-      {
-        path: ":year_id/title/:title_id",   //For Single Perslibs Page
-        element: <SinglePerslib />,
-      },      
-    ]
-  },
-])
+// const router = createBrowserRouter([
+//   {
+//     path: "/year",
+//     element: <AllYears />,       //For  All Years page
+//     children: [
+//       {
+//         path: "title",    //For All Titles Page 
+//         element: <AllTitles />,
+//         children: [
+//           {
+//             path: "perslib",    //For All Perslibs Page 
+//             element: <AllPerslibs />,
+//             children: [
+//               {
+//                 path: ":title_id",   //For Single Perslib Page
+//                 element: <SinglePerslib />,
+//               }, 
+//             ]
+//           },
+//         ]
+//       },
+      
+           
+//     ]
+//   },
+// ])
 
 
 

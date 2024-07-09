@@ -1,9 +1,8 @@
-//Import All Our Components
-import Header from './components/Header'
-import { ToastContainer } from 'react-toastify'  //This is for the alert kind message in react
+import { ToastContainer } from 'react-toastify' //This is for the alert kind message in react
 
 import LoginUser from './pages/LoginPage.js'
 import CreateAccount from './pages/CreateAccountPage.js'
+
 // import ResetPasswordPage from './pages/ResetPasswordPage.js'
 
 import AllYears from './pages/AllYears.js'
@@ -13,17 +12,17 @@ import FormTitle from './pages/FormTitle.js'
 import FormPerslib from './pages/FormPerslib.js'
 import FormYear from './pages/FormYear.js'
 import SinglePerslib from './pages/SinglePerslib.js'
-import SingleYear from './pages/SingleYear.js'
 import SingleTitle from './pages/SingleTitle.js'
-import Year from './components/Year.js'
+import SingleYear from './pages/SingleYear.js'
+// import Title from './components/Title.js'
 
 import './App.css'
 
 //Import React and hooks
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 //import components from React Router
-import {Route, Routes} from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 
 //OUR API URL
 // const apiURL = process.env.REACT_APP_BACKEND_URL  
@@ -31,26 +30,30 @@ const apiURL = 'http://localhost:8000'
 
 
 function App(props) {
-  //========================================================================================================
+
+  const navigate = useNavigate()
+   //========================================================================================================
   //Setting up STATES
   //========================================================================================================
 
   //setup state for profile picture:
-  const [file, setFile] = useState();
-  function handleChange(e) {
-      console.log(e.target.files);
-      setFile(URL.createObjectURL(e.target.files[0]));
-  }
+  // const [file, setFile] = useState()
+  // function handleChange(e) {
+  //     console.log(e.target.files)
+  //     setFile(URL.createObjectURL(e.target.files[0]))
+  // }
 
   //setup state for our years, titles, and perslibs:
   const [years, setYears] = useState([])
+  console.log(years)
   const [titles, setTitles] = useState([])
-  const [perslibs, setPerslibs] = useState([]) 
+  console.log(titles)
+  const [perslibs, setPerslibs] = useState([])
+  console.log(perslibs)
 
 
-  //=========================================================================================================
-  //FUNCTIONS
-  //=========================================================================================================
+  //======================================================================================
+  //FUNCTIONS  
 
   //Defining GET functions:
 
@@ -67,16 +70,25 @@ function App(props) {
     const response = await fetch(apiURL + '/title/')
     const dataTitle = await response.json()
     console.log(dataTitle)
-    setTitles(dataTitle.data)
+    setTitles(dataTitle)
   }
 
+
+  // const [ image_url,setImage] = useState(null)
+  // const [ description,setDescription] = useState("")
+  // const [ date,setDate] = useState("")
+  // const [ time,setTime] = useState("")
+
+  
+
   //For perslib page:
-  const getPerslibs = async () => {
+  const getPerslibs = async() => {
     const response = await fetch(apiURL + '/perslib/')
     const dataPerslib = await response.json()
     console.log(dataPerslib)
     setPerslibs(dataPerslib)
   }
+
   //============================================================================
   //Defining functions for our document CREATE & EDIT:
 
@@ -135,18 +147,20 @@ function App(props) {
     await fetch(`${apiURL}/perslib/`, {
       method: 'post',
       headers: {
-        "content-Type": "application/json",
+        "Accept":"application/json",
+        "content-Type": "multipart/form-data",
       },
-      body: JSON.stringify(dataPerslib)
+      body: dataPerslib
     })
     getPerslibs()
   } else {
     await fetch(`${apiURL}/perslib/${dataPerslib.id}/`, {         //Here, data is bubbling up from FormPerslib.js
       method: 'put',
       headers: {
-        "content-Type": "application/json",
+        "Accept":"application/json",
+        "content-Type": "multipart/form-data",
       },
-      body: JSON.stringify(dataPerslib)
+      body: dataPerslib
     })     
     getPerslibs()
   }
@@ -190,86 +204,83 @@ function App(props) {
   }, [])
 
   //=============================================================================
-
   return (
     <div className="App">
       {/* <h1 className='BigTitle'>Perslib</h1> */}
       <Routes>
         <Route
-          exact 
-          path="/year"
-          element={<AllYears years={years} deleteYear={deleteYear} />}    
-        />
-        <Route
-          exact 
-          path="/year/:id"
-          // element={ <AllTitles titles={titles} deleteTitle={deleteTitle} /> } 
-          element={ <Year years={years} deleteYear={deleteYear} /> } 
-        />
-        <Route
-          exact 
-          path="/year/:year_id/title"
-          element={<AllPerslibs perslibs={perslibs} /> }   
-        />         
-        <Route
-          exact 
-          path="/year/:year_id/title/:title_id"
-          element={<SinglePerslib perslibs={perslibs} deletePerslib={deletePerslib} /> }
-        /> 
+          exact
+          path="/"
+          element={<AllYears years={years} deleteYear={deleteYear} />} />
+
+        <Route 
+          exact path="/year/:id" 
+          element={<SingleYear years={years} deleteYear={deleteYear}/>}/>
+
+        <Route 
+          exact path="/title" 
+          element={<AllTitles titles={titles} deleteTitle={deleteTitle}/>}/> 
 
         <Route
-          exact 
-          path="/year/newyear"
-          element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Add Year' formType='newyear' />} 
-          // Here, we are passing the "handleFormYear", "buttonlabel_year", and "formType" props to FormYear.js.
-        />   
+          exact
+          path="/title/:id"
+          element={<SingleTitle titles={titles} deleteTitle={deleteTitle} />} />
+
         <Route
-          exact 
-          path="/year/edityear/:id"
-          element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Edit Year' formType='edityear' />}
-        />        
+          exact
+          path="/perslib"
+          element={<AllPerslibs perslibs={perslibs} deletePerslib={deletePerslib} />} />
         <Route
-          exact 
+          exact
+          path="/perslib/:id"
+          element={<SinglePerslib perslibs={perslibs} deletePerslib={deletePerslib} />} />
+
+        <Route
+          exact
+          path="/newyear"
+          element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Add Year' formType='newyear' />} />
+        <Route
+          exact
+          path="/edityear/:id"
+          element={<FormYear years={years} handleFormYear={handleFormYear} buttonLabel_year='Edit Year' formType='edityear' />} />
+        <Route
+          exact
           path="/newtitle"
-          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel_title='Add Title' formType='newtitle' />} 
-        />
+          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel_title='Add Title' formType='newtitle' />} />
+
         <Route
-          exact 
+          exact
           path="/edititle/:id"
-          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel_title='Edit Title' formType='edititle' />}
-        />
+          element={<FormTitle titles={titles} handleFormTitle={handleFormTitle} buttonLabel_title='Edit Title' formType='edititle' />} />
         <Route
-          exact 
+          exact
           path="/newperslib"
-          element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Add Item' formType='newperslib' />} 
-        />
+          element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Add Perslib' formType='newperslib' />} />
         <Route
-          exact 
+          exact
           path="/editperslib/:id"
-          element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Edit Item' formType='editperslib' />}
-        />
+          element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Edit Perslib' formType='editperslib' />} />
         <Route
           exact
           path="/login"
-          element={<LoginUser />}
-        />   
+          element={<LoginUser />} />
         <Route
           exact
           path="/user"
-          element={<CreateAccount />}
-        />  
+          element={<CreateAccount />} />
         {/* <Route
-          exact
-          path="/resetpassword"
-          element={<ResetPasswordPage />}
-        />  */}
-        
-      </Routes>  
+              exact
+              path="/resetpassword"
+              element={<ResetPasswordPage />}
+            />  */}
+        {/* <Route path='/year/*' element={navigate('/year/:id')}/> */}
 
-      <ToastContainer />       
+      </Routes>
+
+      <ToastContainer />
 
     </div>
   )
-}
 
+}
 export default App

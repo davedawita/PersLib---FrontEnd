@@ -6,9 +6,8 @@ const FormTitle = (props) => {
   const navigate = useNavigate()
   const params = useParams()
 
-
   //Will get current title here for edit:
-  const currentTitle = useMemo(() => props.titles.find(title => title.id === parseInt(params.id)), [params.id, props.titles])
+  const currentTitle = useMemo(() => props.titles.find(abcd => abcd.id === parseInt(params.id)), [params.id, props.titles])    
 
   const[formData2, setFormData2] = useState(
     props.formType === 'newtitle' ? {
@@ -18,7 +17,7 @@ const FormTitle = (props) => {
       id: parseInt(currentTitle.id)
     }
   )
-  const handleChange = (event) => {
+  const handleChange2 = (event) => {
     setFormData2((prev) => (
       {
         ...prev,
@@ -27,19 +26,20 @@ const FormTitle = (props) => {
     ))
   }
 
-  const handleSubmission = (event) => {     //Here, we need to bring our "event" object because we are waiting for that event on submit
+  const handleSubmission2 = (event) => {     //Here, we need to bring our "event" object because we are waiting for that event on submit
     event.preventDefault()    //To disable default functionality with our form.
     props.handleFormTitle(formData2, props.formType)
-    //Then, after we submit everything here and we pass the information fetch, let's go ahead and navigate to '/':
-    navigate('/title')      //To go back to the titles page.
+    //Then, after we submit everything here and we pass the information fetch, let's go ahead and navigate to '/title':
+    navigate('/title')      //To go back 
+    
   }
 
   return(
-    <form  onSubmit={handleSubmission} className='FormTitle'>
+    <form  onSubmit={handleSubmission2} className='FormTitle'>
         <h3 className = 'EditTitle'>Title</h3>
         <input className='input'
         type='text'
-        onChange={handleChange}
+        onChange={handleChange2}
         value={formData2.title}
         name='title'
         />     

@@ -31,7 +31,7 @@ const FormYear = (props) => {
     event.preventDefault()    //To disable default functionality with our form.
     props.handleFormYear(formData3, props.formType)
     //Then, after we submit everything here and we pass the information fetch, let's go ahead and navigate to '/year':
-    navigate('/year')      //To go back to the years or home page.
+    navigate('/')      //To go and submit to the years page
   }
 
 

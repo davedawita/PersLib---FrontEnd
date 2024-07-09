@@ -8,12 +8,15 @@ const SingleTitle = ({titles}) => {
 
   return (
     <div>
-      <h2>{currentTitle.title}</h2>          
+      <h2>{currentTitle.title}</h2>       
+      <Link to='/newperslib'>
+          <button className='addTitle'>Add Perslib</button>
+      </Link> 
 
-      <Link to={`/edittitle/${params.id}`}>
+      <Link to={`/edititle/${params.id}`}>
         <button>Edit Title</button>
       </Link>
-      <Link to={'/:title'}>
+      <Link to={'/title'}>
         <button>Go Back</button>
       </Link>
     </div>

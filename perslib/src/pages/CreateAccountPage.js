@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom'
 
 const CreateAccount = () => {
 
+  
+
   const [formData, setFormData] = useState({
     "first_name": '',
     "last_name": '',
@@ -56,7 +58,7 @@ const handleChange = (e) => {
     if(isError) {
       toast.error(message)
     } if(isSuccess || user) {
-      navigate('/:id')      
+      navigate('/login')      
     } 
 
     dispatch(reset())

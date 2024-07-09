@@ -11,10 +11,12 @@ const FormPerslib = (props) => {
 
   const[formData, setFormData] = useState(
     props.formType === 'newperslib' ? {
+      image_url: '',
       description: '',
       date: '',
       time: ''
     }: {
+      image_url: currentDoc.image_url,
       Description: currentDoc.description,
       date: currentDoc.date,
       time: currentDoc.time,
@@ -30,17 +32,32 @@ const FormPerslib = (props) => {
     ))
   }
 
+  //Special handlechange for the images:
+  const handleImageChange = (e) => {
+    let newData = { ...formData }
+    newData["image_url"] = e.target.files[0]
+    setFormData(newData)
+  }
+
   const handleSubmission = (event) => {     //Here, we need to bring our "event" object because we are waiting for that event on submit
     event.preventDefault()    //To disable default functionality with our form.
     props.handleFormPerslib(formData, props.formType)
-    //Then, after we submit everything here and we pass the information fetch, let's go ahead and navigate to '/':
-    navigate('/:title/:perslib')      //To go back to the perslibs page.
+    //Then, after we submit everything here and we pass the information fetch, let's go ahead and navigate to '/perslib':
+    navigate('/perslib')      //To go back 
   }
 
   return(
   
 
     <form  onSubmit={handleSubmission} className='Form'>
+        {/* <h3 className = 'EditTitle'>Description</h3> */}
+        <input className='input'
+        type='file'
+        onChange={(e) => {handleImageChange(e)}}
+        accept='image/jpeg, image/jpg, image/png, image/gif'
+        // value={''}
+        name='image_url'
+        />
 
         <h3 className = 'EditTitle'>Description</h3>
         <input className='input'

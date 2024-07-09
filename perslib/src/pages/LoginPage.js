@@ -1,16 +1,20 @@
 import {useEffect, useState} from 'react'
-import {Link, useNavigate } from 'react-router-dom'
+import {Link, useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, reset } from '../features/auth/authSlice'
 
 const LoginUser = () => {
+  
+  const {id} = useParams()
+
   const [formData, setFormData] = useState({
-    "Username": '',
-    "Password": '',
+    "Username": "",
+    "Email": "",
+    "Password": "",
   })
 
-  const { username, password } = formData
+  const { email, username, password } = formData
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -29,7 +33,7 @@ const LoginUser = () => {
     e.preventDefault()
 
     const userData = {
-      username, password
+      email, username, password
     }
     dispatch(login(userData))
   }
@@ -39,16 +43,26 @@ const LoginUser = () => {
     if(isError) {
       toast.error(message)
     } if(isSuccess || user) {
-      navigate('/title')      
+      navigate('/')      
     } 
     dispatch(reset())
 
-  },[isError, isSuccess, user, navigate,dispatch])
+  },[isError, isSuccess, user, navigate,dispatch, message])
 
   return(
     <div>
       <h1>Login to Your Account</h1>
       <form className='inputForm'>
+
+        <input 
+        type='email' 
+        placeholder='Email'
+        name='Email' 
+        class='textInput'
+        onChange={handleChange}
+        value={email}        
+        required       
+        />
 
         <input 
         type='text' 
