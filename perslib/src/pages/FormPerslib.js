@@ -37,17 +37,10 @@ const FormPerslib = (props) => {
     let newData = { ...formData }
     newData["image_url"] = e.target.files[0]
     setFormData(newData)
-    
   }
 
   const handleSubmission = (event) => {     //Here, we need to bring our "event" object because we are waiting for that event on submit
     event.preventDefault()    //To disable default functionality with our form.
-    
-    let form_data = new FormData()
-    form_data.append("image_url", formData.image_url)
-    form_data.append("description", formData.description)
-    form_data.append("date", formData.date)
-    form_data.append("time", formData.time)
     props.handleFormPerslib(formData, props.formType)
     //Then, after we submit everything here and we pass the information fetch, let's go ahead and navigate to '/perslib':
     navigate('/perslib')      //To go back 
