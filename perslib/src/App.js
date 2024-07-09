@@ -25,8 +25,8 @@ import { useState, useEffect } from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 
 //OUR API URL
-// const apiURL = process.env.REACT_APP_BACKEND_URL  
-const apiURL = 'http://localhost:8000'
+const apiURL = process.env.REACT_APP_BACKEND_URL  
+// const apiURL = 'http://localhost:8000'
 
 
 function App(props) {
@@ -143,24 +143,27 @@ function App(props) {
   //Create & Edit function for Perslibs page:
 
   const handleFormPerslib = async (dataPerslib, type) => {
+    
     if(type === 'newperslib'){     //If new, we are creating a resource    
     await fetch(`${apiURL}/perslib/`, {
       method: 'post',
       headers: {
-        "Accept":"application/json",
+        // "content-Type": "application/json",
+        // "Accept":"application/json",
         "content-Type": "multipart/form-data",
       },
-      body: dataPerslib
+      // body: JSON.stringify(dataPerslib)
     })
     getPerslibs()
   } else {
     await fetch(`${apiURL}/perslib/${dataPerslib.id}/`, {         //Here, data is bubbling up from FormPerslib.js
       method: 'put',
       headers: {
-        "Accept":"application/json",
+        // "content-Type": "application/json",
+        // "Accept":"application/json",
         "content-Type": "multipart/form-data",
       },
-      body: dataPerslib
+      // body: JSON.stringify(dataPerslib)
     })     
     getPerslibs()
   }

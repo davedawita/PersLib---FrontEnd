@@ -12,13 +12,13 @@ return(
   <div>
   <Link to={`/perslib/${lib.id}`}>
     <img src={lib.image_url}/>
-    <h1>{lib.description}</h1>
-    <h1>{lib.date}</h1>
-    <h1>{lib.time}</h1>
+    <h1>Description:{lib.description}</h1>
+    <h1>Date: {lib.date}</h1>
+    <h1>Time:{lib.time}</h1>
   </Link>      
  
   <form onSubmit={handleDelete2}>
-    <input className='deletePerslib'type='submit' value='Delete Item' />
+    <input className='deletePerslib'type='submit' value='Delete' />
 
   </form>
 </div>

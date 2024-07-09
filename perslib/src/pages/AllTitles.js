@@ -6,9 +6,9 @@ const AllTitles = (props) => {
   
   return(
     <div>
-      {/* <Link to='/newtitle'>
+      <Link to='/newtitle'>
           <button className='addTitle'>Add Title</button>
-      </Link>       */}
+      </Link>      
       
       {props.titles?.map((abcd) => <Title abcd={abcd} key={abcd.id} deleteTitle={props.deleteTitle} />)}
       
