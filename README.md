@@ -18,6 +18,8 @@ Users will need to create account and login if they need to access the app.
  **<h3>Front-end Repository</h3>**
 The frontend repository can be accessed through the link below:</br>
 
+  https://perslib.netlify.app/
+  
 
  **<h3>Wireframes</h3>**
  
@@ -95,6 +97,7 @@ The following models are included: </br></br>
 <h2><b>perslib/models/perslib:</b></h2></b></br>
  
      class Perslib(models.Model):</br></br>
+        image_url = models.ImageField(upload_to='post_images', blank=True, null=True)
         description = models.CharField(max_length=100)</br>
         date = models.DateField(auto_now=False, auto_now_add=False)</br>
         time = models.TimeField(auto_now=False, auto_now_add=False) </br>
@@ -105,7 +108,7 @@ The following models are included: </br></br>
 POST /user/: Register a new user</br>
 POST /login/: Login a user</br>
 POST /logout/: Logs out a user</br>
-GET /user/profile/: Get user profile details</br>
+
 
  - **<h2>Index Page Route:</h2>** 
 POST/year: This creates the years
@@ -127,6 +130,8 @@ DELETE /perslib/:id/: This deletes a document</br>
 
 <h2>Installation Instructions</h2>
  - Please use the link below to install the app. Enjoy the app!   </br>
+  
+  https://perslib.netlify.app/
  
  
 If you are on a browser, use of Google chrome is highly recommended.    </br>
@@ -164,7 +169,7 @@ Full CRUD(Create, Read, Update, Delete) Functionality. </br>
 Login and Logout access for users   </br>
 
 <h2>Troubleshooting</h2>
-Please click the back button of the browser to go back to previous page. Refresh the page.   </br>
+Please follow route guidelines above to go back to previous page. Refresh the page.   </br>
 
 <h2>Forthcoming Features</h2>
 In the future, we need users to be able to give access to family members so that the documents can be viewed by others. In addition, I need to learn Angular (FrontEnd Framework) and do this same app with it.
