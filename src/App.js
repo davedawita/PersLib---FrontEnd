@@ -260,14 +260,14 @@ function App(props) {
           exact
           path="/editperslib/:id"
           element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Edit Perslib' formType='editperslib' />} />
-        <Route
+        {/* <Route
           exact
           path="/login"
           element={<LoginUser />} />
         <Route
           exact
           path="/user"
-          element={<CreateAccount />} />
+          element={<CreateAccount />} /> */}
         {/* <Route
               exact
               path="/resetpassword"

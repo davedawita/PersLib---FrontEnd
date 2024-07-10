@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 const AllTitles = (props) => {  
   
   return(
-    <div>
+    <div className='mainpage'>
       {/* <Link to='/newtitle'>
           <button className='addTitle'>Add Title</button>
       </Link>       */}
