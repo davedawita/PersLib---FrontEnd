@@ -12,9 +12,9 @@ const AllYears = (props) => {
         <Link to='/newyear'>
           <button className='addYear'>Add Year</button>
         </Link>    
-        <Link to='/logout'>
+        {/* <Link to='/logout'>
           <button className='logoutBtn'>LOG OUT</button>
-        </Link>        
+        </Link>         */}
 
         {props.years.map((asdf) => <Year asdf={asdf} key={asdf.id}  deleteYear={props.deleteYear} />)} 
 

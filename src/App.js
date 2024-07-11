@@ -1,9 +1,3 @@
-import { ToastContainer } from 'react-toastify' //This is for the alert kind message in react
-
-import LoginUser from './pages/LoginPage.js'
-import CreateAccount from './pages/CreateAccountPage.js'
-
-// import ResetPasswordPage from './pages/ResetPasswordPage.js'
 
 import AllYears from './pages/AllYears.js'
 import AllTitles from './pages/AllTitles.js'
@@ -14,7 +8,7 @@ import FormYear from './pages/FormYear.js'
 import SinglePerslib from './pages/SinglePerslib.js'
 import SingleTitle from './pages/SingleTitle.js'
 import SingleYear from './pages/SingleYear.js'
-// import Title from './components/Title.js'
+
 
 import './App.css'
 
@@ -73,13 +67,6 @@ function App(props) {
     setTitles(dataTitle)
   }
 
-
-  // const [ image_url,setImage] = useState(null)
-  // const [ description,setDescription] = useState("")
-  // const [ date,setDate] = useState("")
-  // const [ time,setTime] = useState("")
-
-  
 
   //For perslib page:
   const getPerslibs = async() => {
@@ -260,24 +247,10 @@ function App(props) {
           exact
           path="/editperslib/:id"
           element={<FormPerslib perslibs={perslibs} handleFormPerslib={handleFormPerslib} buttonLabel_perslib='Edit Perslib' formType='editperslib' />} />
-        {/* <Route
-          exact
-          path="/login"
-          element={<LoginUser />} />
-        <Route
-          exact
-          path="/user"
-          element={<CreateAccount />} /> */}
-        {/* <Route
-              exact
-              path="/resetpassword"
-              element={<ResetPasswordPage />}
-            />  */}
-        {/* <Route path='/year/*' element={navigate('/year/:id')}/> */}
+       
 
       </Routes>
 
-      <ToastContainer />
 
     </div>
   )

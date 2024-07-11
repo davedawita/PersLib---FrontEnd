@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom'
-import { Provider } from 'react-redux'
-import store from './app/store.js'
+// import { Provider } from 'react-redux'
+// import store from './app/store.js'
 // import { createBrowserRouter } from 'react-router-dom';   //This is what I added for nested routes 
 // import AllYears from './pages/AllYears.js';
 // import AllTitles from './pages/AllTitles.js';
@@ -54,10 +54,8 @@ root.render(
 
   //Wrap our App Component inside of Router so App can use router.
   <Router>
-    <React.StrictMode>
-      <Provider store={store}>
-        <App />
-      </Provider>     
+    <React.StrictMode>      
+        <App />        
     </React.StrictMode>
   </Router>
   
