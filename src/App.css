@@ -1,7 +1,7 @@
 .App {
   background-color: rgb(50, 48, 46);
-  /* width: 100vw;
-  height: 200vh;   */
+  width: 100vw;
+  height: 200vh;  
   /* overflow: hidden; */
 }
 
@@ -250,7 +250,7 @@
 .yearcontainer {
   background-color: rgb(127, 132, 201);
   width: 400px; 
-
+  margin: 0px 10px 10px 10px;
 
 }
 
@@ -301,4 +301,10 @@
   border-radius: 10px;
   color:white;
   margin: 0 10px 0 px;
+}
+
+.addYear {
+  /* color:White; */
+  font-size: 25px;
+  font-weight: 800;
 }
